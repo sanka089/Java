@@ -1,1 +1,109 @@
-package account2; import java.util.Scanner; /**  *  * @author Ajeet Kumar  */ class Account {    public static  int min=500;    String name;    int Account_num;    public float o_Price;    Scanner sc=new Scanner(System.in);    public void get_info()    {        System.out.println("Enter Name:");        name=sc.nextLine();        System.out.println("Enter Account Number:");        Account_num=sc.nextInt();        System.out.println("Enter opening Ammount must>500:");        o_Price=sc.nextFloat();        if(o_Price <500)        {            System.out.println("Enter opening Ammount must>500:");        }    }    public void show()    {        System.out.println("Name:"+name);        System.out.println("Account_number:"+Account_num);        System.out.println("Ammount:"+o_Price);    } } class  Current  extends Account {   float deposit,withdraw,penality;   public void deposit()   {      System.out.println("Eneter Ammount to deposit") ;      deposit =sc.nextFloat();      show();      o_Price=o_Price+deposit;      System.out.println("Total Ammount is :"+o_Price) ;         }   public void check_Bal()   {       if(o_Price500");           o_Price=o_Price-150;           System.out.println("You have debited ammount 150 from your acccount Account balance is:"+o_Price);       }          }   public void withdraw_Bal()   {       System.out.println("Enter Ammount to withdraw");       withdraw=sc.nextFloat();       show();       /*if(o_Price<500)       {           System.out.println("For withdrawl Balance must >500 Rupee");       }*/       if(withdraw
+import java.util.*;
+class account{
+String ac_name;
+int ac_no;
+account(String s,int ac){
+ac_name=s;ac_no=ac;
+}
+
+
+}
+class sav_act extends account{
+Scanner sc=new Scanner(System.in);
+double sum=0;
+sav_act(String s,int ac){
+super(s,ac);
+}
+void deposite(){
+System.out.println("ENTER AMOUNT");
+double am=sc.nextInt();
+sum+=am;
+return;
+}
+void balance(){
+System.out.println("BALANCE AMOUNT IS "+sum);
+return;
+}
+double interest(){
+return sum*0.07;
+}
+void withdraw(){
+System.out.println("ENTER THE AMOUNT");
+double am=sc.nextInt();
+sum-=am;
+return;
+}
+}
+class cur_act extends account{
+cur_act(String s,int ac){
+super(s,ac);
+}
+Scanner sc=new Scanner(System.in);
+double sum1=0;
+void deposite(){
+System.out.println("ENTER AMOUNT");
+double am=sc.nextInt();
+sum1+=am;
+return;
+}
+void balance(){
+System.out.println("BALANCE AMOUNT IS "+sum1);
+return;
+}
+void withdraw(){
+System.out.println("ENTER THE AMOUNT");
+double am=sc.nextInt();
+sum1-=am;
+return;
+}
+
+}
+class bank{
+public static void main(String args[]){
+
+Scanner sc=new Scanner(System.in);
+int flag=1;
+
+System.out.println("ENTER NAME AND ACCOUNT NUMBER");
+String ac_name=sc.next();
+int ac_no=sc.nextInt();
+sav_act sa=new sav_act(ac_name,ac_no);
+                cur_act cu=new cur_act(ac_name,ac_no);
+
+while(flag==1){
+System.out.println("1.DEPOSIT AMOUNT"+"\n"+"2.DISPLAY BALANCE"+"\n"+"3.SHOW INTEREST"+"\n"+"4.WITHDRAW"+"\n"+"5.DETAILS"+"\n"+"6.exit");
+int ch=sc.nextInt();
+
+switch(ch){
+case 1:
+System.out.println("1.DEPOSITE AMOUNT IN SAVING ACCOUNT 2.DEPOSITE AMOUNT IN CURRENT ACCOUNT");
+int x=sc.nextInt();
+if(x==1) sa.deposite();
+if(x==2) cu.deposite();
+break;
+case 2:
+System.out.println("1.BALANCE AMOUNT IN SAVING ACCOUNT 2.BALANCE AMOUNT IN CURRENT ACCOUNT");
+int y=sc.nextInt();
+if(y==1) sa.balance();
+if(y==2) cu.balance();
+break;
+case 3:
+System.out.println("INTEREST AMOUNT IS "+sa.interest());
+break;
+case 4:
+System.out.println("1.WITHDRAW USING CASH 2.WITHDRAW USING CHEQUE");
+int z=sc.nextInt();
+if(z==1) sa.withdraw();
+if(z==2) cu.withdraw();
+break;
+case 5:
+System.out.println("ACCOUNT DETAILS ARE "+sa.ac_name+" and "+sa.ac_no);
+break;
+case 6:
+flag=0;
+break;
+default: System.out.println("INVALID INPUTS");
+}
+}
+   }
+}
