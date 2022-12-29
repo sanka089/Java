@@ -25,13 +25,25 @@ System.out.println("BALANCE AMOUNT IS "+sum);
 return;
 }
 double interest(){
-return sum*0.07;
+System.out.println("Enter intrest rate and time");
+double intrest_rate = sc.nextDouble();
+double time = sc.nextDouble();
+System.out.println("Simple intrest = "+sum*intrest_rate*time/100);
+return sum+sum*intrest_rate*time/100;
 }
 void withdraw(){
+if(sum<100){
+System.out.println("The balance Limit reaced");
+return;
+}
 System.out.println("ENTER THE AMOUNT");
 double am=sc.nextInt();
+if(sum-am<100){
+System.out.println("NoT enough funds in account");
+}else{
 sum-=am;
 return;
+}
 }
 }
 class cur_act extends account{
@@ -51,14 +63,24 @@ System.out.println("BALANCE AMOUNT IS "+sum1);
 return;
 }
 void withdraw(){
+if(sum1<100){
+System.out.println("The balance Limit reaced");
+return;
+}
 System.out.println("ENTER THE AMOUNT");
 double am=sc.nextInt();
+
+if(sum1-am<100){
+System.out.println("NoT enough funds in account");
+}
+else{
 sum1-=am;
 return;
 }
+}
 
 }
-class bank{
+class bank1{
 public static void main(String args[]){
 
 Scanner sc=new Scanner(System.in);
@@ -88,15 +110,21 @@ if(y==1) sa.balance();
 if(y==2) cu.balance();
 break;
 case 3:
-System.out.println("INTEREST AMOUNT IS "+sa.interest());
+
+System.out.println("INTREST IS "+sa.interest());
+
+
+
 break;
 case 4:
-System.out.println("1.WITHDRAW USING CASH 2.WITHDRAW USING CHEQUE");
+System.out.println("1.WITHDRAW USING CASH IN SAVINGS ACC 2.WITHDRAW USING CHEQUE IN CURR ACC 3.WITHDRAW USING CASH IN CURR ACC");
 int z=sc.nextInt();
 if(z==1) sa.withdraw();
 if(z==2) cu.withdraw();
+if(z==3) cu.withdraw();
 break;
 case 5:
+System.out.println("DISPLAY");
 System.out.println("ACCOUNT DETAILS ARE "+sa.ac_name+" and "+sa.ac_no);
 break;
 case 6:
